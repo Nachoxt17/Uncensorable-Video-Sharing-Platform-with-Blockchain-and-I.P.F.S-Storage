@@ -1,9 +1,9 @@
 {
-  "name": "DVideo",
+  "name": "uncensorable-video-sharing-platform-with-blockchain-and-i.p.f.s-storage",
   "version": "0.1.0",
-  "description": "Decentralized platform for video publishing",
-  "author": "Dapp University",
-  "homepage": ".",
+  "description": "Uncensorable Video Sharing Platform(made as a Youtube Clone but without Censorship) made with Blockchain and I.P.F.S storage using Ethereum, Javascript, Solidity, Web3.js and React.js.",
+  "author": "ignacioceaglio@protonmail.com",
+  "homepage": "https://github.com/Nachoxt17/Uncensorable-Video-Sharing-Platform-with-Blockchain-and-I.P.F.S-Storage",
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.1.0",
     "babel-polyfill": "6.26.0",
@@ -45,6 +45,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "prettier": "^2.2.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.2"
   }
 }
