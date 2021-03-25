@@ -38,12 +38,12 @@ contract DVideo {
 
   /**+-(3)-Upload Video.*/
   function uploadVideo(string memory _videoHash, string memory _title) public {/**(We use "memory" in the Arguments of this Func. because the Uploading process is temporary).*/
-    //+-Make sure the video hash exists:_
-
+    //+-Make sure the video hash exists before doing anything:_
+    require(bytes(_videoHash).length > 0);
     //+-Make sure video title exists:_
-
+    require(bytes(_title).length > 0);
     //+-Make sure uploader address exists:_
-
+    require(msg.sender != address(0));
 
     //+-Increment video id:_
     videoCount ++;
