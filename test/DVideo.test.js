@@ -10,7 +10,7 @@ contract('DVideo', ([deployer, author]) => {
   before(async () => {
     dvideo = await DVideo.deployed()
   })
-
+  //+-Check that the Deployment happens:_
   describe('deployment', async () => {
     it('deploys successfully', async () => {
       const address = await dvideo.address
@@ -35,9 +35,9 @@ contract('DVideo', ([deployer, author]) => {
       videoCount = await dvideo.videoCount()
     })
 
-    //check event
+    //+-Check "Video Uploaded" Event.
     it('creates videos', async () => {
-      // SUCESS
+      //+-SUCESS!!!:_
       assert.equal(videoCount, 1)
       const event = result.logs[0].args
       assert.equal(event.id.toNumber(), videoCount.toNumber(), 'id is correct')
@@ -45,14 +45,14 @@ contract('DVideo', ([deployer, author]) => {
       assert.equal(event.title, 'Video title', 'title is correct')
       assert.equal(event.author, author, 'author is correct')
 
-      // FAILURE: Video must have hash
+      //+-FAILURE: Video must have hash.
       await dvideo.uploadVideo('', 'Video title', { from: author }).should.be.rejected;
 
-      // FAILURE: Video must have title
+      //+-FAILURE: Video must have title.
       await dvideo.uploadVideo('Video hash', '', { from: author }).should.be.rejected;
     })
 
-    //check from Struct
+    //+-Check from Struct (of Data):_
     it('lists videos', async () => {
       const video = await dvideo.videos(videoCount)
       assert.equal(video.id.toNumber(), videoCount.toNumber(), 'id is correct')

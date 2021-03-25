@@ -5,12 +5,13 @@ import Main from './Main'
 import Web3 from 'web3';
 import './App.css';
 
-//Declare IPFS
+//+-Declare IPFS:_
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
 
 class App extends Component {
 
+  /**+-Copy-Paste Code for Using Web3 in Every React-No-Hooks App:_{-.*/
   async componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
@@ -28,65 +29,70 @@ class App extends Component {
       window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
     }
   }
+  /**-}.*/
 
   async loadBlockchainData() {
     const web3 = window.web3
-    //Load accounts
-    //Add first account the the state
+    //+-Load accounts:_
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+    //+-Add first account the the state:_
 
-    //Get network ID
-    //Get network data
-    //Check if net data exists, then
-      //Assign dvideo contract to a variable
-      //Add dvideo to the state
+    //+-Get network ID:_
+    //+-Get network data:_
+    //+-Check if net data exists, then===>:_
+      //=>+-Assign dvideo contract to a variable:_
+      //=>+-Add dvideo to the state:_
 
-      //Check videoAmounts
-      //Add videAmounts to the state
+      //=>+-Check videoAmounts:_
+      //=>+-Add videAmounts to the state:_
 
-      //Iterate throught videos and add them to the state (by newest)
+      //=>+-Iterate throught videos and add them to the state (by newest):_
 
 
-      //Set latest video and it's title to view as default 
-      //Set loading state to false
+      //=>+-Set latest video and it's title to view as default :_
+      //=>+-Set loading state to false:_
 
-      //If network data doesn't exisits, log error
+      //=>+-If network data doesn't exisits, log error:_
   }
 
-  //Get video
+  //+-Get video:_
   captureFile = event => {
 
   }
 
-  //Upload video
+  //+-Upload video:_
   uploadVideo = title => {
 
   }
 
-  //Change Video
+  //+-Change Video:_
   changeVideo = (hash, title) => {
 
   }
 
   constructor(props) {
     super(props)
+    //+-set states:_
     this.state = {
-      loading: false
-      //set states
+      loading: false,
+      account: '',
     }
 
-    //Bind functions
+    //+-Bind functions:_
   }
 
   render() {
     return (
       <div>
         <Navbar 
-          //Account
+          //+-Account:_
+          account={this.state.account}
         />
         { this.state.loading
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
           : <Main
-              //states&functions
+              //+-states&functions:_
             />
         }
       </div>
