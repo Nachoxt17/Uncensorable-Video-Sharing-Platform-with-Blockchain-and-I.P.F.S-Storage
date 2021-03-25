@@ -5,7 +5,7 @@
   "author": "ignacioceaglio@protonmail.com",
   "homepage": "https://github.com/Nachoxt17/Uncensorable-Video-Sharing-Platform-with-Blockchain-and-I.P.F.S-Storage",
   "dependencies": {
-    "@truffle/hdwallet-provider": "^1.1.0",
+    "@truffle/hdwallet-provider": "^1.2.4",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-es2015": "6.24.1",
