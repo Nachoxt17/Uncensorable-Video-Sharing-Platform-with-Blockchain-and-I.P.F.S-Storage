@@ -39,26 +39,55 @@ class App extends Component {
     //+-Add first account the the state:_
 
     //+-Get network ID:_
+    const networkId = await web3.eth.net.getId();
     //+-Get network data:_
+    const networkData = DVideo.networks[networkId];
+
     //+-Check if net data exists, then===>:_
+    if(networkData) {
       //=>+-Assign dvideo contract to a variable:_
+      const dvideo = new web3.eth.Contract(DVideo.abi, networkData.address);
       //=>+-Add dvideo to the state:_
+      this.setState({ dvideo });
 
       //=>+-Check videoAmounts:_
+      const videosCount = await dvideo.methods.videoCount().call();
       //=>+-Add videAmounts to the state:_
+      this.setState({ videosCount });
 
       //=>+-Iterate throught videos and add them to the state (by newest):_
-
+      for (var i=videosCount; i>=1; i--) {
+        const video = await dvideo.methods.videos(i).call()
+        this.setState({
+          videos: [...this.state.videos, video]
+        })
+      }
 
       //=>+-Set latest video and it's title to view as default :_
+      const latest = await dvideo.methods.videos(videosCount).call()
+      this.setState({
+        currentHash: latest.hash,
+        currentTitle: latest.title
+      })
       //=>+-Set loading state to false:_
-
+      this.setState({ loading: false})
+    } else {
       //=>+-If network data doesn't exisits, log error:_
+      window.alert('DVideo contract not deployed to detected network.');
+    }   
   }
 
   //+-Get video:_
   captureFile = event => {
+    event.preventDefault()
+    const file = event.target.files[0]
+    const reader = new window.FileReader()
+    reader.readAsArrayBuffer(file)
 
+    reader.onloadend = () => {
+      this.setState({ buffer: Buffer(reader.result) })
+      console.log('buffer', this.state.buffer)
+    }
   }
 
   //+-Upload video:_
@@ -68,7 +97,7 @@ class App extends Component {
 
   //+-Change Video:_
   changeVideo = (hash, title) => {
-
+    
   }
 
   constructor(props) {
@@ -77,6 +106,11 @@ class App extends Component {
     this.state = {
       loading: false,
       account: '',
+      dvideo: null,
+      videos: [],
+      loading: true,
+      currentHash: null,
+      currentTitle: null
     }
 
     //+-Bind functions:_
@@ -93,6 +127,8 @@ class App extends Component {
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
           : <Main
               //+-states&functions:_
+              captureFile={this.captureFile}
+
             />
         }
       </div>

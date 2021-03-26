@@ -16,27 +16,34 @@ class Main extends Component {
             <h3>{/* Code... */}</h3>
           </div>
           <div className="col-md-2 overflow-auto text-center" style={{ maxHeight: '768px', minWidth: '175px' }}>
-            <h5><b>{/* Share Video */}</b></h5>
+            <h5><b>Share Video</b></h5>
             <form onSubmit={(event) => {
-              {/* Upload Video...*/}
+              {/*+-Upload Video:_*/}
             }} >
               &nbsp;
-              {/* Get Video...*/}
+              <input type='file' accept=".mp4, .mkv .ogg .wmv" onChange={this.props.captureFile} style={{ width: '250px' }} />
               <div className="form-group mr-sm-2">
-                {/* Input...*/}
+              {/*+-Get Video:_*/}
+                <input
+                    id="videoTitle"
+                    type="text"
+                    ref={(input) => { this.videoTitle = input }}
+                    className="form-control-sm"
+                    placeholder="Title..."
+                    required />
               </div>
-              {/* Button...*/}
+              <button type="submit" className="btn btn-danger btn-block btn-sm">Upload!</button>
               &nbsp;
             </form>
-            {/* Map Video...*/}
-              {/* Return Video...*/}
+            {/*+-Map Video:_*/}
+              {/*+-Return Video:_*/}
               <div style={{ width: '175px'}}>
                 <div className="card-title bg-dark">
                   <small className="text-white"><b>{/*Video title*/}</b></small>
                 </div>
                   <div>
-                    {/* Change Video...*/}
-                    {/* Return Side Videos...*/}
+                    {/*+-Change Video:_*/}
+                    {/*+-Return Side Videos:_*/}
                   </div>
               </div>
           </div>
