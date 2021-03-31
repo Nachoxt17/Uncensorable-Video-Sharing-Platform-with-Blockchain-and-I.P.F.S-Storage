@@ -12,7 +12,7 @@
 ## +-To Test:_ 
 +-(1)-Connect Ganache with Metamask and create a Test Account:_ https://www.linkedin.com/pulse/using-ganache-ethereum-emulator-metamask-farhan-khan/
 
-+-(2)-Login with the Metamask-Ganache Trial Account on the Page and Upload some Videos and put them Titles, you will ahve to accept the transactions in Metamask. You can use the Videos in the folder "testVideos".
++-(2)-Login with the Metamask-Ganache Trial Account on the Page and Upload some Videos and put them Titles, you will have to accept the transactions in Metamask. You can use the Videos in the folder "testVideos".
 
 +-(2)-Now you can see the Videos you uploaded and their Titles, and you can also scroll over the other videos you uploaded.
 
